@@ -1,0 +1,631 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #F8F9FA;
+    overflow-x: hidden; 
+}
+
+/* 🔹 Header */
+.header{
+    background: rgba(10, 25, 47, 0.9);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.header button{
+    font-size: 18px;
+    height: auto;
+    width: auto;
+    max-width: 90%;
+    margin-left: 20px;
+    background: transparent;
+    border: none;
+    color: #00ADB5;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis;
+}
+
+.header button:hover{
+    color: #64FFDA;
+}
+
+/* 🔹 Sidebar */
+.sidebar{
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: -250px;
+    width: 250px;
+    background-color: #112240;
+    color: #E0E0E0; 
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease-in-out;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar.active ~ .dashboard-content {
+    width: calc(100% - 250px); /*Reduce width when sidebar is open */
+    margin-left: 250px; /* hift content */
+}
+.sidebar h2{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.sidebar ul li {
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a {
+    color: #E0E0E0;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul li a:hover {
+    color: #64FFDA; 
+}
+
+/* 🔹 Header Title */
+.header h1{
+    padding: 10px;
+    margin-left: 20px;
+}
+
+/* 🔹 Profile Button */
+.profile{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 30px;
+}
+
+#profile-btn{
+    width: 150px;
+    height: 40px;
+    border: none;
+    padding-right: 5px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+}
+
+#profile-btn:hover {
+    background: #007d84; 
+   color: white;
+   transition: 0.5s;
+}
+
+/* 🔹 Dropdown */
+.dropdown{
+    display: none;
+    position: fixed;
+    top: 55px;
+    right: 30px;
+    background: #1B263B; 
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    width: 150px;
+    height: auto;
+    z-index: 1000;
+}
+
+.dropdown a {
+    text-align: center;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #E0E0E0; 
+    font-size: 16px;
+}
+
+.dropdown a:hover {
+    background: #3E5C76; 
+    border-top: 1px solid #A8DADC; 
+    border-bottom: 1px solid #A8DADC;
+}
+
+/* 🔹 Active Dropdown */
+.profile.active .dropdown {
+    display: block;
+}
+
+/* 🔹 Dashboard Content */
+.dashboard-content{
+    margin-top: 70px;
+    padding: 20px;
+    width: calc(100% - 0px);
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* 🔹 Profile Page Container */
+.profile-container {
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 80px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    transform: scale(0.95);
+    display: none; /* ✅ Initially hidden */
+}
+
+/* 🔹 When Profile Section is Shown */
+.profile-container.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 🔹 Profile Title */
+.profile-container h2 {
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* 🔹 Profile Details */
+.profile-container p {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #ddd; 
+}
+
+/* 🔹 Password Field */
+.profile-container #password {
+    font-weight: bold;
+    font-size: 18px;
+    color: #444;
+}
+
+/* 🔹 Show Password Button */
+.profile-container button {
+    background: #00ADB5; /* Modern Cyan */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.profile-container button:hover {
+    background: #007d84; /* Darker Cyan */
+    transform: scale(1.05);
+}
+
+/* 🔹 Close Button */
+.profile-container .close-btn {
+    background: #e74c3c; /* Red */
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+.profile-container .close-btn:hover {
+    background: #c0392b; /* Darker Red */
+}
+
+/* 🌟 Upload Exam Container */
+.container1 {
+    max-width: 550px;
+    background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+    backdrop-filter: blur(10px);
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+}
+
+/* 🌟 Heading */
+.container1 h2 {
+    margin-bottom: 12px;
+    font-size: 24px;
+    color: #ffeb3b; /* Bright yellow */
+    font-weight: bold;
+}
+
+/* 🌟 Description Text */
+.container1 p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #ddd; /* Light gray */
+}
+
+/* 🌟 Form Label */
+.container1 label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: #fff; /* White for readability */
+    margin-bottom: 6px;
+}
+
+/* 🌟 Input Fields */
+.container1 input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+}
+
+/* 🌟 File Upload Input */
+.container1 input[type="file"] {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+/* 🌟 Focus Effect */
+.container1 input:focus {
+    border: 2px solid #ffeb3b; /* Yellow border on focus */
+}
+
+/* 🌟 Buttons */
+.container1 button {
+    background: #ff5722; /* Vibrant orange */
+    color: white;
+    padding: 12px 18px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 🌟 Button Hover Effect */
+.container1 button:hover {
+    background: #e64a19;
+    transform: scale(1.05);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+    .container1 {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .container1 h2 {
+        font-size: 22px;
+    }
+
+    .container1 input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .container1 button {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+}
+
+/* past assessments */
+/* Container Styling */
+.table-container {
+    width: 90%;
+    max-width: 95%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Table Styling */
+#table-heading{
+    margin-bottom: 8px;
+}
+
+#your-assessments-table {
+    width: auto;
+    border-collapse: collapse;
+    overflow: hidden;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Table Header */
+#your-assessments-table thead {
+    background: #007bff;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Table Header Cells */
+#your-assessments-table th {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Table Body Rows */
+#your-assessments-table tbody tr {
+    color: black;
+    transition: background 0.3s;
+}
+
+/* Hover Effect */
+#your-assessments-table tbody tr:hover {
+    background: rgba(0, 123, 255, 0.2);
+}
+
+/* Table Cells */
+#your-assessments-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Status Column Colors */
+.status-active {
+    background: #28a745; /* Green */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-expired {
+    background: #dc3545; /* Red */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-cancelled {
+    background: #ffc107; /* Yellow */
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-inprogress {
+    background: #17a2b8; /* Blue */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.cancel-btn:hover {
+    background-color: darkred;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    #your-assessments-table thead {
+        display: none;
+    }
+
+    #your-assessments-table tbody tr {
+        display: block;
+        margin-bottom: 10px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    #your-assessments-table tbody tr td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: none;
+        font-size: 14px;
+    }
+
+    #your-assessments-table tbody tr td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+/* 🌟 Upload Exam Container */
+.container2 {
+    max-width: 550px;
+    background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+    backdrop-filter: blur(10px);
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 0;
+}
+
+/* 🌟 Heading */
+.container2 h2 {
+    margin-bottom: 12px;
+    font-size: 24px;
+    color: #ffeb3b; /* Bright yellow */
+    font-weight: bold;
+}
+
+/* 🌟 Form Label */
+.container2 label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+/* 🌟 Input Fields */
+.container2 input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+}
+
+/* 🌟 File Upload Input */
+.container2 input[type="file"] {
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+/* 🌟 Focus Effect */
+.container2 input:focus {
+    border: 2px solid #ffeb3b; /* Yellow border on focus */
+}
+
+/* 🌟 Buttons */
+.container2 button {
+    background: #ff5722; /* Vibrant orange */
+    color: white;
+    padding: 12px 18px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 🌟 Button Hover Effect */
+.container2 button:hover {
+    background: #e64a19;
+    transform: scale(1.05);
+}
+
+/* 🌟 Remove Button */
+#remove-btn {
+    margin-bottom: 20px;
+    background: red; /* Red for Remove */
+    color: white;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#remove-btn:hover {
+    background: #bf2a2a;
+}
+
+/* 🌟 Add More Button */
+#add-more {
+    background: #4caf50; /* Green for Add */
+}
+
+#add-more:hover {
+    background: #388e3c;
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+    .container2 {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .container2 h2 {
+        font-size: 22px;
+    }
+
+    .container2 input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .container2 button {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+}

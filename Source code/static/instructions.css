@@ -1,0 +1,101 @@
+/* 🌟 Reset and General Page Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Unique blue gradient */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 🌟 Centered Content */
+.container {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent */
+    backdrop-filter: blur(12px); /* Frosted glass effect */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* 🌟 Headings */
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffeb3b; /* Bright yellow for contrast */
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffcc80; /* Warm orange */
+    margin-top: 18px;
+}
+
+/* 🌟 Default List Styling (No Custom Styles) */
+ul {
+    text-align: left;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+/* 🌟 Start Exam Button */
+.button-container {
+    margin-top: 25px;
+}
+
+.start-button {
+    background: #ff5722; /* Vibrant orange */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.start-button:hover {
+    background: #e64a19;
+    transform: translateY(-3px);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .start-button {
+        font-size: 16px;
+        padding: 12px 22px;
+    }
+}

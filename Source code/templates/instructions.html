@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='instructions.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Instructions for Online Assisstive Examination System.</h2>
+        <h3>General Guidelines.</h3>
+        <ul>
+            <li>Use voice commands like "Next question" and "Repeat question" for navigation.</li>
+            <li>Exam duration: [120 minutes], with voice alerts for time tracking.</li>
+            <li>Answer by saying "Option A," "Option B," "Option C","Option D" and confirm with "Lock answer."</li>
+            <li>Skip a question by saying "Skip question."</li>
+            <li>Navigate back to a previous question by saying "Previous question."</li>
+        </ul>
+        <h3>Exam Rules</h3>
+        <ul>
+            <li>No external assistance is allowed.</li>
+            <li>Exam cannot be paused once started.</li>
+        </ul>
+        <h3>Accessibility-Specific Features</h3>
+        <ul>
+            <li>Speak clearly for optimal system response.</li>
+            <li>The system will confirm commands vocally.</li>
+        </ul>
+        <h3>Submission Guidelines</h3>
+        <ul>
+            <li>Exam auto-submits when time is up.</li>
+            <li>Manually submit by saying "Submit exam" and confirm with "Yes, submit."</li>
+        </ul>
+        <h3>Acknowledgment</h3>
+        <p>By proceeding, you agree to follow the rules and guidelines.</p>
+        <div class="button-container">
+            <button class="start-button">if you are ready to begin the test,then say,Start Exam</button>
+        </div>
+    </div>
+
+    <script  src="{{url_for('static', filename='instructions.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<body>
+    <div class="container2" id="content">
+        <h1>Face Verification</h1>
+        <p>Please make sure that your face is inside the frame.</p>
+        <p id="time">Verification will be done in <span id="timer">05</span> sec</p>
+        <p id="load">Verifying.....</p>
+    </div>
+
+    <div class="web_container">
+        <img id="webcam_feed" src="/video_feed" style="width: 400px; max-height: 400px;">
+    </div>
+
+    <div class="container3">
+        <p>If you leave the frame, verification will fail.</p>
+    </div>
+</body>
+<style>
+    /* General Page Styling – Prevent Scrolling */
+body, html {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container 2 - Face Verification */
+.container2 {
+    background-color: #ffffff;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Timer and Verification Text */
+#time {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+#timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+#load {
+    font-size: 18px;
+    font-style: italic;
+    color: #007bff;
+    display: none; /* Hide initially */
+}
+
+/* Webcam Container */
+.web_container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Webcam Feed */
+#webcam_feed {
+    width: 400px;
+    max-height: 300px;
+    border-radius: 10px;
+    border: 2px solid #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Warning Message */
+.container3 {
+    background-color: #ffeeba;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    font-weight: bold;
+    color: #856404;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Make Everything Fit on Mobile Screens */
+@media (max-width: 768px) {
+    .container2, .container3, #webcam_feed {
+        width: 90%;
+    }
+    .web_container {
+        top: 45%;
+    }
+}
+
+</style>

@@ -1,0 +1,54 @@
+<body>
+    <div class="container1">
+        <h2>Login</h2>
+        <form id="login-form" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="signup-text">
+                <p>Don't have an account <a id="signup-btn" href="#" onclick="loadSignup()">Signup</a></p>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="submit">login</button>
+                <button type="button" onclick="loadIndex()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</body>
+
+<style>
+    /* Style the paragraph */
+.signup-text {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #555;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Style the Signup link */
+.signup-text a {
+    color: #007bff; /* Bootstrap blue */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.signup-text a:hover {
+    color: #0056b3; /* Darker blue */
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .signup-text {
+        font-size: 14px;
+    }
+}
+
+</style>
